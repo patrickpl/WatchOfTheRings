@@ -1,6 +1,6 @@
 # Watch Of The Rings
 
-![picture of the watch face](https://github.com/patrickpl/WatchOfTheRings/blob/master/watchface.png)
+![picture of the watch face](https://github.com/patrickpl/WatchOfTheRings/raw/master/doc/watchface.png)
 
 ## Key Features
 
