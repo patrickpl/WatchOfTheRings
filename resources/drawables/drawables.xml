@@ -1,0 +1,7 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <drawable-list id="smiley">
+        <shape type="circle" x="150" y="150" radius="50" color="Graphics.COLOR_BLUE" border_width="10" border_color="Graphics.COLOR_RED" />
+        <shape type="circle" x="250" y="250" radius="5" color="Graphics.COLOR_BLUE" />
+    </drawable-list>
+</drawables>
