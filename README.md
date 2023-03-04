@@ -41,3 +41,7 @@ You can [Install]() the latest installable version of the watch face from the Ga
 ## Questions, Support and Contribution
 
 To ask questions and get support you can create an issue on GitHub. If you want to contribute to the code please clone the repository, make your changes and create a pull request.
+
+## Credits
+
+* [lukaszgruca](https://github.com/lukaszgruca) for sharing your [SilverWatchFace](https://github.com/lukaszgruca/SilverWatchFace). It was a great help

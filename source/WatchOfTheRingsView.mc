@@ -6,8 +6,6 @@ using Toybox.Time as Time;
 using Toybox.Activity as Act;
 using Toybox.ActivityMonitor as ActM;
 
-// ideas basend on: https://github.com/lukaszgruca/SilverWatchFace/blob/master/SilverWatchFace/source/SilverWatchFaceView.mc
-
 class WatchOfTheRingsView extends Ui.WatchFace {
 
     //! Constants
@@ -54,10 +52,6 @@ class WatchOfTheRingsView extends Ui.WatchFace {
         drawArc(dc, x, y, 173, (activityInfo.steps / activityInfo.stepGoal.toFloat()) * 2 * Math.PI, Gfx.COLOR_BLUE);
         drawArc(dc, x, y, 158, (activityInfo.floorsClimbed / activityInfo.floorsClimbedGoal.toFloat()) * 2 * Math.PI, Gfx.COLOR_PURPLE);
         drawArc(dc, x, y, 143, (activityInfo.activeMinutesWeek.total / activityInfo.activeMinutesWeekGoal.toFloat()) * 2 * Math.PI, Gfx.COLOR_YELLOW);
-
-        //drawArc(dc, x, y, 173, (1.0) * 2 * Math.PI, Gfx.COLOR_BLUE);
-        //drawArc(dc, x, y, 158, (1.0) * 2 * Math.PI, Gfx.COLOR_PURPLE);
-        //drawArc(dc, x, y, 143, (1.0) * 2 * Math.PI, Gfx.COLOR_YELLOW);
 
         // Battery indicator
         dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
@@ -126,9 +120,6 @@ class WatchOfTheRingsView extends Ui.WatchFace {
         return null;
     }
 
-    //! Fast (but kind of bad-looking) arc drawing.
-    //! From http://stackoverflow.com/questions/8887686/arc-subdivision-algorithm/8889666#8889666
-    //! TODO: Once we have drawArc, use that instead.
     function drawArc(dc, cent_x, cent_y, radius, theta, color) {
         dc.setColor( color, Gfx.COLOR_WHITE);
 
@@ -153,5 +144,4 @@ class WatchOfTheRingsView extends Ui.WatchFace {
 
     function onExitSleep( ) {
     }
-
 }
