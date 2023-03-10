@@ -36,7 +36,7 @@ Second option is to clone the repository and use the Garmin developer environmen
 
 ## Download
 
-You can [Install]() the latest installable version of the watch face from the Garmin IQ store 
+You can [Install](https://apps.garmin.com/en-US/apps/5844b0ef-d19b-453e-92eb-603baa3a1297) the latest installable version of the watch face from the Garmin IQ store 
 
 ## Questions, Support and Contribution
 
