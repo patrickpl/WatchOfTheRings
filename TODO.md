@@ -1,19 +1,8 @@
 - [ ] centralize color management
-- [ ] add icons
-    - steps
-    - stairs
-    - calories burned
-    - heartrate
-- [ ] add values
-    - steps
-    - stairs
-    - calories burned
-    - heartrate
 - [ ] decide for a color scheme
 - [ ] fix heart rate
 - [ ] add icon for activity time
 - [ ] rearrange icons
 - [ ] check if heart rate is updated once per second
 - [ ] change steps icon
-- [ ] rename and minor cleanups
  
