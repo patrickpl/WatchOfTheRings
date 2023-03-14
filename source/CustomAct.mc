@@ -35,11 +35,11 @@ class CustomArc extends WatchUi.Drawable {
         Drawable.initialize(params);
 
         radius = params.get(:radius);
-        completion = params.get(:completion) * 2 * Math.PI;
+        completion = params.get(:completion) ? params.get(:completion) * 2 * Math.PI : 0;
         color = params.get(:color);
     }
 
     public function setPercentageOfCompletion (p) {
-        completion = p;
+        completion = p  * 2 * Math.PI;
     }
 }

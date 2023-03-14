@@ -59,31 +59,16 @@ class WatchOfTheRingsView extends WatchUi.WatchFace {
         var heartrateValue = View.findDrawableById("HeartrateValue") as WatchUi.Text;
         heartrateValue.setText(getHeartRate());
 
-        var ringSteps = new CustomArc({
-            :radius => 173,
-            :completion => (activityInfo.steps / activityInfo.stepGoal.toFloat()), 
-            :color => Graphics.COLOR_BLUE
-        });
+        var ringSteps = View.findDrawableById("RingSteps") as CustomArc;
+        ringSteps.setPercentageOfCompletion(activityInfo.steps / activityInfo.stepGoal.toFloat());
+        
+        var ringFloorsClimbed = View.findDrawableById("RingFloorsClimbed") as CustomArc;
+        ringFloorsClimbed.setPercentageOfCompletion(activityInfo.floorsClimbed / activityInfo.floorsClimbedGoal.toFloat());
 
-        var ringFloorsClimbed = new CustomArc({
-            :radius => 158, 
-            :completion => (activityInfo.floorsClimbed / activityInfo.floorsClimbedGoal.toFloat()), 
-            :color => Graphics.COLOR_PURPLE
-        });
-
-        var ringActiveMinutesWeek = new CustomArc({
-            :radius => 143,
-            :completion => (activityInfo.activeMinutesWeek.total / activityInfo.activeMinutesWeekGoal.toFloat()),
-            :color => Graphics.COLOR_YELLOW
-        });
-
-        //var ringFloorsClimbed = View.findDrawableById("RingFloorsClimbed") as WatchUi.Drawable.CustomArc;
-        //ringFloorsClimbed.setPercentageOfCompletion(0.5);
+        var ringActiveMinutesWeek = View.findDrawableById("RingActivityMinutesWeek") as CustomArc;
+        ringActiveMinutesWeek.setPercentageOfCompletion(activityInfo.activeMinutesWeek.total / activityInfo.activeMinutesWeekGoal.toFloat());
 
         View.onUpdate(dc);
-        ringFloorsClimbed.draw(dc);
-        ringSteps.draw(dc);
-        ringActiveMinutesWeek.draw(dc);
     }
 
     function getHeartRate() {
