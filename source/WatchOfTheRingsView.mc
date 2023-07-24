@@ -101,8 +101,8 @@ class WatchOfTheRingsView extends WatchUi.WatchFace {
         var pmString = "";
 
         if (!is24Hour) {
-            hour = 1 + (time.hour + 11) % 12;
-            pmString = time.hour >= 13 ? "PM" : "AM";
+            hour = 1 + ( (time.hour + 11) % 12 );
+            pmString = time.hour >= 12 ? "PM" : "AM";
         }
 
         return Lang.format("$1$:$2$ $3$", [hour, time.min.format("%02d"), pmString]);
