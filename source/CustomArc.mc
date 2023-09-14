@@ -15,10 +15,10 @@ class CustomArc extends WatchUi.Drawable {
         var xMid = dc.getWidth() / 2;
         var yMid = dc.getHeight() / 2;
 
-        var iters = ARC_MAX_ITERS * ( completion / ( 2 * Math.PI ) );
+        var iters = ARC_MAX_ITERS * ( completion / ( 2 * Math.PI ) ) + 0.0001; // avoid div by zero
         var dx = 0;
         var dy = -radius;
-        var ctheta = Math.cos(completion/(iters - 1));
+                var ctheta = Math.cos(completion/(iters - 1));
         var stheta = Math.sin(completion/(iters - 1));
 
         dc.fillCircle(xMid + dx, yMid + dy, BAR_THICKNESS);
