@@ -21,6 +21,12 @@ class WatchOfTheRingsApp extends Application.AppBase {
         return [new WatchOfTheRingsView()];
     }
 
+
+    // experimental settings
+    function getSettingsView() {
+        return [new SLeanSettingsMenu(),new SLeanSettingsMenuDelegate()];
+    } 
+
 }
 
 function getApp() as WatchOfTheRingsApp {
