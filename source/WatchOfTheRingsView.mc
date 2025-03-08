@@ -6,12 +6,12 @@ using Toybox.Time;
 using Toybox.Activity;
 using Toybox.ActivityMonitor;
 
-class WatchOfTheRingsView extends WatchUi.WatchFace {
+class WatchOfTheRingsView extends WatchUi.View {
 
     var device_settings;
 
     function initialize() {
-        WatchFace.initialize();
+        View.initialize();
     }
 
     //! Load your resources here
@@ -53,17 +53,26 @@ class WatchOfTheRingsView extends WatchUi.WatchFace {
         var activityMinutesWeekValue = View.findDrawableById("ActivityMinutesWeekValue") as WatchUi.Text;
         activityMinutesWeekValue.setText(activityInfo.activeMinutesWeek.total.toString());
 
+        // Floors climbed value is optional due to sensor availability
         var floorsClimbedValue = View.findDrawableById("FloorsClimbedValue") as WatchUi.Text;
-        floorsClimbedValue.setText(activityInfo.floorsClimbed.toString());
-
+        if (floorsClimbedValue != null) {
+            floorsClimbedValue.setText(activityInfo.floorsClimbed.toString());
+        }
+        
+        // Heart rate value is optional due to screen size limitations on some devices
         var heartrateValue = View.findDrawableById("HeartrateValue") as WatchUi.Text;
-        heartrateValue.setText(getHeartRate());
+        if (heartrateValue != null) {
+            heartrateValue.setText(getHeartRate());
+        }
 
         var ringSteps = View.findDrawableById("RingSteps") as CustomArc;
         ringSteps.setPercentageOfCompletion(activityInfo.steps / activityInfo.stepGoal.toFloat());
-        
+
+        // Floors climbed value is optional due to sensor availability        
         var ringFloorsClimbed = View.findDrawableById("RingFloorsClimbed") as CustomArc;
-        ringFloorsClimbed.setPercentageOfCompletion(activityInfo.floorsClimbed / activityInfo.floorsClimbedGoal.toFloat());
+        if (ringFloorsClimbed != null) {
+            ringFloorsClimbed.setPercentageOfCompletion(activityInfo.floorsClimbed / activityInfo.floorsClimbedGoal.toFloat());
+        }
 
         var ringActiveMinutesWeek = View.findDrawableById("RingActivityMinutesWeek") as CustomArc;
         ringActiveMinutesWeek.setPercentageOfCompletion(activityInfo.activeMinutesWeek.total / activityInfo.activeMinutesWeekGoal.toFloat());

@@ -1,0 +1,36 @@
+<layout id="WatchFace">
+
+    <drawable id="RingSteps" class="CustomArc">
+        <param name="radius">105</param>
+        <param name="color">Graphics.COLOR_BLUE</param>
+        <param name="barThickness">3</param>
+    </drawable>
+
+    <drawable id="RingFloorsClimbed" class="CustomArc">
+        <param name="radius">95</param>
+        <param name="color">Graphics.COLOR_PURPLE</param>
+        <param name="barThickness">3</param>
+    </drawable>
+
+    <drawable id="RingActivityMinutesWeek" class="CustomArc">
+        <param name="radius">85</param>
+        <param name="color">Graphics.COLOR_YELLOW</param>
+        <param name="barThickness">3</param>
+    </drawable>
+
+    <label id="BatteryValue" x="center" y="35" font="Gfx.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_GREEN" />
+    <label id="TimeValue" x="center" y="50" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_WHITE" />
+    <label id="DateValue" x="center" y="80" font="Gfx.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_WHITE" />      
+
+    <label id="ActivityMinutesWeekIcon" text="6" x="55" y="100" font="@Fonts.font_icon" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_YELLOW" />
+    <label id="ActivityMinutesWeekValue" x="88" y="105" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+
+    <label id="StepsIcon" text="5" x="125" y="100" font="@Fonts.font_icon" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_BLUE" />
+    <label id="StepsValue" x="155" y="105" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+
+    <label id="FloorsClimbedIcon" text="0" x="55" y="135" font="@Fonts.font_icon" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_PURPLE" />
+    <label id="FloorsClimbedValue" x="95" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+
+    <label id="CaloriesBurnedIcon" text="2" x="120" y="135" font="@Fonts.font_icon" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_ORANGE" />
+    <label id="CaloriesBurnedValue" x="150" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+</layout>
