@@ -24,7 +24,7 @@ class WatchOfTheRingsApp extends Application.AppBase {
 
     // experimental settings
     function getSettingsView() {
-        return [new SLeanSettingsMenu(),new SLeanSettingsMenuDelegate()];
+        return [new SettingsMenu(),new SettingsMenuDelegate()];
     } 
 
 }

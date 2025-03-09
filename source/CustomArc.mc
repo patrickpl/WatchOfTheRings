@@ -44,4 +44,8 @@ class CustomArc extends WatchUi.Drawable {
     public function setPercentageOfCompletion (p) {
         completion = p  * 2 * Math.PI;
     }
+
+    public function setColor (c) {
+        color = c;
+    }
 }

@@ -5,6 +5,7 @@ using Toybox.Lang;
 using Toybox.Time;
 using Toybox.Activity;
 using Toybox.ActivityMonitor;
+using Toybox.Application.Storage;
 
 class WatchOfTheRingsView extends WatchUi.View {
 
@@ -33,10 +34,22 @@ class WatchOfTheRingsView extends WatchUi.View {
         // Set background color
         dc.clear();
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+
+        // only for debugging
+        System.println("Color: " + Storage.getValue("Color"));
+        if (Storage.getValue("Color")) {
+            dc.clear();
+            dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        }
+
+
+
+
         dc.fillRectangle(0, 0, dc.getWidth(), dc.getHeight());
 
         var batteryValue = View.findDrawableById("BatteryValue") as WatchUi.Text;
         batteryValue.setText(Lang.format("$1$%", [statsInfo.battery.toNumber()]));
+        batteryValue.setColor(Graphics.COLOR_WHITE);
 
         var timeValue = View.findDrawableById("TimeValue") as WatchUi.Text;
         timeValue.setText(getFortmatedTime());
@@ -77,6 +90,7 @@ class WatchOfTheRingsView extends WatchUi.View {
         var ringActiveMinutesWeek = View.findDrawableById("RingActivityMinutesWeek") as CustomArc;
         ringActiveMinutesWeek.setPercentageOfCompletion(activityInfo.activeMinutesWeek.total / activityInfo.activeMinutesWeekGoal.toFloat());
 
+        setThemeColors(dc);
         View.onUpdate(dc);
     }
 
@@ -115,6 +129,30 @@ class WatchOfTheRingsView extends WatchUi.View {
         }
 
         return Lang.format("$1$:$2$ $3$", [hour, time.min.format("%02d"), pmString]);
+    }
+
+    function setThemeColors(dc) {
+        var color = Storage.getValue("Color");
+        var theme = Theme.getTheme(color);
+
+        var stepsIcon = View.findDrawableById("StepsIcon") as WatchUi.Text;
+        var caloriesBurnedIcon = View.findDrawableById("CaloriesBurnedIcon") as WatchUi.Text;
+        var floorsClimbedIcon = View.findDrawableById("FloorsClimbedIcon") as WatchUi.Text;
+        var activityMinutesWeekIcon = View.findDrawableById("ActivityMinutesWeekIcon") as WatchUi.Text;
+        var ringSteps = View.findDrawableById("RingSteps") as CustomArc;
+        var ringFloorsClimbed = View.findDrawableById("RingFloorsClimbed") as CustomArc;
+        var ringActiveMinutesWeek = View.findDrawableById("RingActivityMinutesWeek") as CustomArc;
+
+        stepsIcon.setColor(theme.get("stepsColor"));
+
+        caloriesBurnedIcon.setColor(theme.get("caloriesColor"));
+        ringSteps.setColor(theme.get("stepsColor"));
+
+        floorsClimbedIcon.setColor(theme.get("floorsClimbedColor"));
+        ringFloorsClimbed.setColor(theme.get("floorsClimbedColor"));
+
+        activityMinutesWeekIcon.setColor(theme.get("activityMinutesColor"));
+        ringActiveMinutesWeek.setColor(theme.get("activityMinutesColor"));
     }
 
     function onEnterSleep( ) {
