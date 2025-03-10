@@ -21,11 +21,9 @@ class WatchOfTheRingsApp extends Application.AppBase {
         return [new WatchOfTheRingsView()];
     }
 
-
-    // experimental settings
-    function getSettingsView() {
-        return [new SettingsMenu(),new SettingsMenuDelegate()];
-    } 
+    function onSettingsChanged() as Void {
+        WatchUi.requestUpdate();
+    }
 
 }
 
