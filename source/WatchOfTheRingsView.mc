@@ -1,11 +1,11 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
-using Toybox.System;
-using Toybox.Lang;
-using Toybox.Time;
-using Toybox.Activity;
-using Toybox.ActivityMonitor;
-using Toybox.Application.Properties;
+import Toybox.WatchUi;
+import Toybox.Graphics;
+import Toybox.System;
+import Toybox.Lang;
+import Toybox.Time;
+import Toybox.Activity;
+import Toybox.ActivityMonitor;
+import Toybox.Application.Properties;
 
 class WatchOfTheRingsView extends WatchUi.View {
 
