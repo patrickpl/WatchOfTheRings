@@ -5,7 +5,7 @@ using Toybox.Lang;
 using Toybox.Time;
 using Toybox.Activity;
 using Toybox.ActivityMonitor;
-using Toybox.Application.Storage;
+using Toybox.Application.Properties;
 
 class WatchOfTheRingsView extends WatchUi.View {
 
@@ -36,14 +36,11 @@ class WatchOfTheRingsView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
 
         // only for debugging
-        System.println("Color: " + Storage.getValue("Color"));
-        if (Storage.getValue("Color")) {
+        System.println("Color: " + Properties.getValue("Color"));
+        if (Properties.getValue("Color")) {
             dc.clear();
             dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         }
-
-
-
 
         dc.fillRectangle(0, 0, dc.getWidth(), dc.getHeight());
 
@@ -132,27 +129,30 @@ class WatchOfTheRingsView extends WatchUi.View {
     }
 
     function setThemeColors(dc) {
-        var color = Storage.getValue("Color");
+        var color = Properties.getValue("Color");
         var theme = Theme.getTheme(color);
 
-        var stepsIcon = View.findDrawableById("StepsIcon") as WatchUi.Text;
-        var caloriesBurnedIcon = View.findDrawableById("CaloriesBurnedIcon") as WatchUi.Text;
-        var floorsClimbedIcon = View.findDrawableById("FloorsClimbedIcon") as WatchUi.Text;
-        var activityMinutesWeekIcon = View.findDrawableById("ActivityMinutesWeekIcon") as WatchUi.Text;
-        var ringSteps = View.findDrawableById("RingSteps") as CustomArc;
-        var ringFloorsClimbed = View.findDrawableById("RingFloorsClimbed") as CustomArc;
-        var ringActiveMinutesWeek = View.findDrawableById("RingActivityMinutesWeek") as CustomArc;
+        setColorIfExists(theme, "StepsIcon", "stepsColor");
+        setColorIfExists(theme, "CaloriesBurnedIcon", "caloriesColor");
+        setColorIfExists(theme, "FloorsClimbedIcon", "floorsClimbedColor");
+        setColorIfExists(theme, "ActivityMinutesWeekIcon", "activityMinutesColor");
 
-        stepsIcon.setColor(theme.get("stepsColor"));
+        setColorIfExists(theme, "RingSteps", "stepsColor");
+        setColorIfExists(theme, "RingFloorsClimbed", "floorsClimbedColor");
+        setColorIfExists(theme, "RingActivityMinutesWeek", "activityMinutesColor");
+    }
 
-        caloriesBurnedIcon.setColor(theme.get("caloriesColor"));
-        ringSteps.setColor(theme.get("stepsColor"));
-
-        floorsClimbedIcon.setColor(theme.get("floorsClimbedColor"));
-        ringFloorsClimbed.setColor(theme.get("floorsClimbedColor"));
-
-        activityMinutesWeekIcon.setColor(theme.get("activityMinutesColor"));
-        ringActiveMinutesWeek.setColor(theme.get("activityMinutesColor"));
+    function setColorIfExists(theme, drawableId, color) {
+        var drawable = View.findDrawableById(drawableId);
+        if (drawable != null) {
+            if (drawable instanceof WatchUi.Text) {
+                (drawable as WatchUi.Text).setColor(theme.get(color));
+            } else if (drawable instanceof CustomArc) {
+                (drawable as CustomArc).setColor(theme.get(color));
+            } else {
+                System.println("Drawable is not a Text or CustomArc: " + drawableId);
+            }
+        }
     }
 
     function onEnterSleep( ) {

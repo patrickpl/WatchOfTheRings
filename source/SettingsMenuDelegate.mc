@@ -1,5 +1,7 @@
 import Toybox.WatchUi;
 import Toybox.Application.Storage; 
+import Toybox.System;
+import Toybox.Application.Properties;
 
 class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
     function initialize() {
@@ -9,16 +11,18 @@ class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
   	function onSelect(item) {
   		var id=item.getId();
 		if(id.equals("default")) {
-			Storage.setValue("Color", "default");
+			Properties.setValue("Color", "default");
 		} else if(id.equals("red")) {
-			Storage.setValue("Color", "red");
+			Properties.setValue("Color", "red");
 		} else if(id.equals("blue")) {
-			Storage.setValue("Color", "blue");
+			Properties.setValue("Color", "blue");
 		} else if(id.equals("green")) {
-			Storage.setValue("Color", "green");
+			Properties.setValue("Color", "green");
 		} else if(id.equals("yellow")) {
-			Storage.setValue("Color", "yellow");
-		} 
+			Properties.setValue("Color", "yellow");
+		} else {
+			Properties.setValue("Color", "default");
+		}
 		WatchUi.popView(WatchUi.SLIDE_BLINK);
 		WatchUi.requestUpdate();
 	}

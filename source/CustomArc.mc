@@ -10,7 +10,7 @@ class CustomArc extends WatchUi.Drawable {
     public var xMid, yMid, radius, completion, color, barThickness;
 
     function draw(dc) as Void {
-        dc.setColor( color, Graphics.COLOR_WHITE);
+        dc.setColor(color, Graphics.COLOR_WHITE);
 
         var xMid = dc.getWidth() / 2;
         var yMid = dc.getHeight() / 2;
