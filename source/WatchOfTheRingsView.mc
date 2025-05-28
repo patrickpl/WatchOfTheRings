@@ -46,7 +46,15 @@ class WatchOfTheRingsView extends WatchUi.View {
 
         var batteryValue = View.findDrawableById("BatteryValue") as WatchUi.Text;
         batteryValue.setText(Lang.format("$1$%", [statsInfo.battery.toNumber()]));
-        batteryValue.setColor(Graphics.COLOR_WHITE);
+        
+        var batteryPercentage = statsInfo.battery.toNumber();
+        if (batteryPercentage <= 10) {
+            batteryValue.setColor(Graphics.COLOR_RED);
+        } else if (batteryPercentage <= 20) {
+            batteryValue.setColor(Graphics.COLOR_YELLOW);
+        } else {
+            batteryValue.setColor(Graphics.COLOR_WHITE);
+        }
 
         var timeValue = View.findDrawableById("TimeValue") as WatchUi.Text;
         timeValue.setText(getFortmatedTime());
